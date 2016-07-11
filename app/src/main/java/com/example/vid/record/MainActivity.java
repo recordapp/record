@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,12 +18,17 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText mass;
     String massValue;
     int[] massArray={89,88,87};
     TextView test;
+    String sessionId = "";
 
 
     @Override
@@ -34,36 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void sendMessage(View v) {
+    public void openForm(View v) {
 
         massValue = mass.getText().toString();
-
-        test = (TextView) findViewById(R.id.test);
-
-        String patientIdEhr = "50bc1c98-8540-4d86-bbc7-813f7c55377e";
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        String url = "http://ip.jsontest.com/";
-
-        //request
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        test.setText(response.toString());
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        test.setText("Prišlo je do napake med identifikacijo na strežniku!");
-                    }
-                });
-
-        queue.add(jsObjRequest);
-
-        /*Intent i = new Intent(MainActivity.this, Form.class);
+        Intent i = new Intent(MainActivity.this, Form.class);
         i.putExtra("mass", massArray);
-        startActivity(i);*/
+        startActivity(i);
     }
 }
