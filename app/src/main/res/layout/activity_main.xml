@@ -9,19 +9,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.vid.record.MainActivity">
 
-    <Button
-        android:id="@+id/button_form"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VNOS"
+        android:id="@+id/vnos_teze"/>
+
+    <Button
+        android:id="@+id/button_open_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OPEN FORM"
         android:onClick="sendMessage"
         />
 
-    <Button
-        android:id="@+id/button_get"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PRIDOBI"
-        android:onClick="sendMessage"
-        />
 </TableLayout>
