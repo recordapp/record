@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText mass;
     String massValue;
-    TextView text;
     int[] massArray={89,88,87};
 
 
@@ -22,13 +21,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mass = (EditText) findViewById(R.id.vnos_teze);
-        text = (TextView) findViewById(R.id.test);
+
+        String patientIdEhr = "50bc1c98-8540-4d86-bbc7-813f7c55377e";
+
+        
     }
 
     public void sendMessage(View v) {
 
         massValue = mass.getText().toString();
-        text.setText(massValue);
 
         Intent i = new Intent(MainActivity.this, Form.class);
         i.putExtra("mass", massArray);
