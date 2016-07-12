@@ -22,6 +22,14 @@
         android:onClick="openForm"
         />
 
+    <Button
+        android:id="@+id/button_get_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GET DATA"
+        android:onClick="getData"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
