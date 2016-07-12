@@ -48,7 +48,7 @@ public class Form extends AppCompatActivity {
 
         String url2 = "https://rest.ehrscape.com/rest/v1/composition?ehrId=" + patientIdEhr +
 
-                "&templateId=Vital%20Signs&format=FLAT&committer=";
+                "&templateId=Heart%20Failure%20Detection&format=FLAT&committer=";
 
         //Spremenljivke za čas
         Calendar c = Calendar.getInstance();
@@ -87,8 +87,8 @@ public class Form extends AppCompatActivity {
         Map<String,String> params = new HashMap<String, String>();
         params.put("ctx/language","en");
         params.put("ctx/territory", "SI");
-        params.put("vital_signs/body_weight/any_event/body_weight", mass2);
-        params.put("ctx/time", time);
+        params.put("encounter/body_weight:0/any_event:0/weight|magnitude", "70");
+        params.put("encounter/body_weight:0/any_event:0/weight|unit", "kg");
 
         //DRUGI REQUEST. V glavi pošljemo sessionID, v body-ju pa podatke za vpis. Oboje je v formatu JSON
         JsonObjectRequest jsObjRequest2 = new JsonObjectRequest
