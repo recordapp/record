@@ -89,6 +89,12 @@ public class Form extends AppCompatActivity {
         params.put("ctx/territory", "SI");
         params.put("encounter/body_weight:0/any_event:0/weight|magnitude", "70");
         params.put("encounter/body_weight:0/any_event:0/weight|unit", "kg");
+        params.put("encounter/body_water:0/total_water_percentage|magnitude", "92");
+        params.put("encounter/body_water:0/total_water_percentage|unit", "%");
+        params.put("encounter/pulse_heart_beat:0/any_event:0/heart_rate|magnitude", "69");//
+        params.put("encounter/pulse_heart_beat:0/any_event:0/heart_rate|unit", "/min");
+        params.put("encounter/measurement_of_body_segment:0/ankle_circumference:0|magnitude", "23");
+        params.put("encounter/measurement_of_body_segment:0/ankle_circumference:0|unit", "cm");
 
         //DRUGI REQUEST. V glavi pošljemo sessionID, v body-ju pa podatke za vpis. Oboje je v formatu JSON
         JsonObjectRequest jsObjRequest2 = new JsonObjectRequest
