@@ -16,9 +16,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.scribejava.apis.TwitterApi;
+import com.github.scribejava.core.builder.ServiceBuilder;
+import com.github.scribejava.core.model.OAuth1AccessToken;
+import com.github.scribejava.core.model.OAuth1RequestToken;
+import com.github.scribejava.core.model.OAuthRequest;
+import com.github.scribejava.core.model.Verb;
+import com.github.scribejava.core.oauth.OAuth10aService;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,60 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         test = (TextView) findViewById(R.id.test);
 
-        String patientIdEhr = "50bc1c98-8540-4d86-bbc7-813f7c55377e";
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-
-        String url = "https://rest.ehrscape.com/rest/v1/session?username=medrockweek1&password=medrockweek1";
-
-        String url2 ="https://rest.ehrscape.com/rest/v1/view/"+patientIdEhr+"/weight";
-
-        //request
-        //PRVI REQUEST. V URL-ju pošljemo geslo in username, kot odgovor pa dobimo SessionID.
-        //Head in Body requesta sta prazna
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        //opstring se uporabi, ker v primeru napacnega keya vrne null string.
-                        sessionId = response.optString("sessionId", null);
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        test.setText("Prišlo je do napake med identifikacijo na strežniku!");
-                    }
-                });
-
-        //Dodamo request v queue
-       // queue.add(jsObjRequest);
-
-        Map<String,String> params = new HashMap<String, String>();
-
-        //DRUGI REQUEST. V glavi pošljemo sessionID, v body-ju pa podatke za vpis. Oboje je v formatu JSON
-        JsonObjectRequest jsObjRequest2 = new JsonObjectRequest
-                (Request.Method.GET, url2, new JSONObject(params), new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        test.setText("Vpis je bil uspešno poslan!");
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        test.setText("Prišlo je do napake med prenosom podatkov!");
-                    }
-                }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                //Glava (head)
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                headers.put("Ehr-Session", sessionId);
-                return headers;
-            }
-        };
-        //queue.add(jsObjRequest2);
     }
 
     public void openForm(View v) {
@@ -112,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         String url = "https://rest.ehrscape.com/rest/v1/session?username=medrockweek1&password=medrockweek1";
 
-        String url2 ="https://rest.ehrscape.com/rest/v1/view/"+patientIdEhr+"/weight";
+        String url2 ="https://rest.ehrscape.com/rest/v1/query/?aql=select%20%20%20%20%20a_a/data%5Bat0002%5D/events%5Bat0003%5D/data%5Bat0001%5D/items%5Bat0004%5D/value/magnitude%20as%20Weight_magnitude,%20%20%20%20%20a_b/data%5Bat0001%5D/events%5Bat0002%5D/data%5Bat0003%5D/items%5Bat0004%5D/value/magnitude%20as%20Total_water_percentage_magnitude,%20%20%20%20%20a_a/data%5Bat0002%5D/origin/value%20from%20EHR%20e%20contains%20COMPOSITION%20a%20contains%20(%20%20%20%20%20OBSERVATION%20a_a%5BopenEHR-EHR-OBSERVATION.body_weight.v1%5D%20and%20%20%20%20%20OBSERVATION%20a_b%5BopenEHR-EHR-OBSERVATION.body_water.v0%5D)%20offset%200%20limit%20100";
 
         //request
         //PRVI REQUEST. V URL-ju pošljemo geslo in username, kot odgovor pa dobimo SessionID.
@@ -136,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         queue.add(jsObjRequest);
 
         Map<String,String> params = new HashMap<String, String>();
+        //params.put("aql", "select a from EHR e contains COMPOSITION a[openEHR-EHR-COMPOSITION.encounter.v1] where a/name/value='Encounter' offset 0 limit 100");
 
         //DRUGI REQUEST. V glavi pošljemo sessionID, v body-ju pa podatke za vpis. Oboje je v formatu JSON
         JsonObjectRequest jsObjRequest2 = new JsonObjectRequest
@@ -143,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         test.setText("Vpis je bil uspešno poslan!");
+                        test.setText(response.getString(""));
                     }
                 }, new Response.ErrorListener() {
                     @Override
