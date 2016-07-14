@@ -40,18 +40,21 @@ public class Form extends AppCompatActivity {
     String position_hr;
     String position_circ;
 
+    ArrayList<String> seznam = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
         Bundle extras = getIntent().getExtras();
-        ArrayList<String> seznam = new ArrayList<String>();
         seznam = getIntent().getStringArrayListExtra("mass");
 
         test = (TextView) findViewById(R.id.test);
 
-        test.setText(seznam.toString());
+        int izracun_teze = algoritm(seznam);
+        //int meja_teze = 5;
+        //test.setText(HeartAttackPrediction(izracun_teze, meja_teze));
 
         //mass2 = Integer.toString(massArray[2]);
 
@@ -178,6 +181,31 @@ public class Form extends AppCompatActivity {
                     position_circ = "at0040";
                     position_hr = "at1000";
                 break;
+        }
+    }
+
+    public int algoritm(ArrayList<String> list1) {
+        int sestevek = 0;
+        int x = 0;
+        int n=0;
+
+        for(int i=0; i<(list1.size()-1); i++) {
+            x = Integer.parseInt(list1.get(i));
+            sestevek = sestevek + x;
+            n=i;
+        }
+        int povprecje = x/n;
+
+        return ((100*Integer.parseInt(list1.get(n+1)))/povprecje)-100;
+    }
+
+    public String HeartAttackPrediction(int izracun, int meja) {
+
+        if(izracun>meja) {
+            return "Please, visit a doctor";
+        }
+        else {
+            return "Everything OK";
         }
     }
 }

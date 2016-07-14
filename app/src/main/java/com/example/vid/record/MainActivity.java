@@ -117,15 +117,6 @@ public class MainActivity extends AppCompatActivity {
                                 test1 = test1 + weight1.toString()+" ";
                             }
                                 test.setText(seznam.toString());
-                            //test.setText("ss");
-
-
-                            /*for(int i = 0; i<resultSetJSON.length(); i++) {
-                                JSONObject meritevJSON = resultSetJSON.getJSONObject(i);
-                                String meritev = meritevJSON.getString();
-                                JSONObject tezaJSON = meritevJSON.getJSONObject();
-                                ArrayList<JSONObject> seznam_meritev = resultSetJSON.getJSONObject(i);
-                            }*/
                         } catch (JSONException e) {
                             e.printStackTrace();
                             test.setText("Napaka pri parsanju");
@@ -150,6 +141,6 @@ public class MainActivity extends AppCompatActivity {
         queue.add(jsObjRequest2);
         Intent i = new Intent(MainActivity.this, Form.class);
         i.putExtra("mass", seznam);
-        startActivity(i);
+        //startActivity(i);
     }
 }
