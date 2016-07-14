@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,11 +46,14 @@ public class Form extends AppCompatActivity {
         setContentView(R.layout.activity_form);
 
         Bundle extras = getIntent().getExtras();
-        int[] massArray = extras.getIntArray("mass");
+        ArrayList<String> seznam = new ArrayList<String>();
+        seznam = getIntent().getStringArrayListExtra("mass");
 
         test = (TextView) findViewById(R.id.test);
 
-        mass2 = Integer.toString(massArray[2]);
+        test.setText(seznam.toString());
+
+        //mass2 = Integer.toString(massArray[2]);
 
         body_weight_form = (EditText) findViewById(R.id.weight_form);
         body_fluids_form = (EditText) findViewById(R.id.body_fluid_form);

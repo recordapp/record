@@ -148,6 +148,8 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         queue.add(jsObjRequest2);
-
+        Intent i = new Intent(MainActivity.this, Form.class);
+        i.putExtra("mass", seznam);
+        startActivity(i);
     }
 }
