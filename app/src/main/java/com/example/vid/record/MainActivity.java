@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     int[] massArray={89,88,87};
     TextView test;
     String sessionId = "";
-
+    ArrayList<String> seznam = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,12 +107,18 @@ public class MainActivity extends AppCompatActivity {
 
                             String resultSet = response.getString("resultSet");
                             JSONArray resultSetJSON = new JSONArray(resultSet);
-                            JSONObject weightJSON = resultSetJSON.getJSONObject(3);
-                            test.setText("ss");
-                            String weight = weightJSON.getString("Weight");
-                            JSONObject weight1JSON = new JSONObject(weight);
-                            String weight1 = weight1JSON.getString("units");
-                            test.setText(weight1.toString());
+                            String test1 = "";
+                            for(int i = 0; i<resultSetJSON.length(); i++) {
+                                JSONObject weightJSON = resultSetJSON.getJSONObject(i);
+                                String weight = weightJSON.getString("Weight");
+                                JSONObject weight1JSON = new JSONObject(weight);
+                                String weight1 = weight1JSON.getString("magnitude");
+                                seznam.add(weight1.toString());
+                                test1 = test1 + weight1.toString()+" ";
+                            }
+                                test.setText(seznam.toString());
+                            //test.setText("ss");
+
 
                             /*for(int i = 0; i<resultSetJSON.length(); i++) {
                                 JSONObject meritevJSON = resultSetJSON.getJSONObject(i);
@@ -142,5 +148,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         queue.add(jsObjRequest2);
+
     }
 }
