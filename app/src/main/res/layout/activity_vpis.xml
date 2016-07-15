@@ -10,13 +10,13 @@
     tools:context="com.example.vid.record.vpis">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:id="@+id/imageView10"
-        android:src="@mipmap/logo2"
+        android:src="@drawable/logo2"
+        android:layout_marginBottom="39dp"
         android:layout_above="@+id/editText5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="45dp" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"

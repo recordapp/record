@@ -10,13 +10,13 @@
     tools:context="com.example.vid.record.MainActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:id="@+id/imageView"
-        android:src="@mipmap/logo"
+        android:src="@drawable/logo"
+        android:layout_marginTop="17dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,9 +24,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Good morning, Marija!"
         android:id="@+id/textView"
-        android:layout_marginTop="21dp"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
-        android:src="@mipmap/weight"
+        android:src="@drawable/weight"
         android:layout_alignTop="@+id/editText"
         android:layout_toRightOf="@+id/editText"
         android:layout_alignBottom="@+id/editText"
@@ -79,7 +79,7 @@
         android:layout_alignTop="@+id/editText2"
         android:layout_alignRight="@+id/imageView2"
         android:layout_alignEnd="@+id/imageView2"
-        android:src="@mipmap/percentage"
+        android:src="@drawable/percentage"
         android:layout_alignBottom="@+id/editText2"
         android:layout_alignLeft="@+id/imageView2"
         android:layout_alignStart="@+id/imageView2" />
@@ -102,7 +102,7 @@
         android:layout_below="@+id/editText2"
         android:layout_alignRight="@+id/imageView3"
         android:layout_alignEnd="@+id/imageView3"
-        android:src="@mipmap/minute"
+        android:src="@drawable/minute"
         android:layout_alignBottom="@+id/editText3"
         android:layout_alignLeft="@+id/imageView3"
         android:layout_alignStart="@+id/imageView3" />
@@ -125,7 +125,7 @@
         android:layout_below="@+id/editText3"
         android:layout_alignRight="@+id/imageView4"
         android:layout_alignEnd="@+id/imageView4"
-        android:src="@mipmap/length"
+        android:src="@drawable/length"
         android:layout_toEndOf="@+id/editText4"
         android:layout_alignBottom="@+id/editText4"
         android:layout_toRightOf="@+id/editText4" />
@@ -138,12 +138,11 @@
         android:background="#F80232"
         android:textColor="#FFFFFF"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_marginBottom="23dp"
         android:allowUndo="false"
         android:clickable="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:onClick="record"
-        />
+        android:layout_marginBottom="23dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
