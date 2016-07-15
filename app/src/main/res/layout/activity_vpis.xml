@@ -48,7 +48,8 @@
         android:layout_below="@+id/editText6"
         android:layout_centerHorizontal="true"
         android:background="#F80232"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:onClick="sign"/>
 
 
 </RelativeLayout>

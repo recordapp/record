@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mass = (EditText) findViewById(R.id.vnos_teze);
+        //mass = (EditText) findViewById(R.id.vnos_teze);
 
         test = (TextView) findViewById(R.id.test);
 
