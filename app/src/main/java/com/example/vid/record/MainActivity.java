@@ -143,4 +143,9 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("mass", seznam);
         //startActivity(i);
     }
+
+    public void record(View v) {
+        Intent i = new Intent(MainActivity.this, second.class);
+        startActivity(i);
+    }
 }
