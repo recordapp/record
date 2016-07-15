@@ -44,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
     String sessionId = "";
     ArrayList<String> seznam = new ArrayList<String>();
 
+    String weight;
+    String body_water;
+    String heart_rate;
+    String ankle_circ;
+
+    EditText weight_form;
+    EditText body_water_form;
+    EditText heart_rate_form;
+    EditText ankle_circ_form;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
         //mass = (EditText) findViewById(R.id.vnos_teze);
 
         test = (TextView) findViewById(R.id.test);
+
+        weight_form = (EditText) findViewById(R.id.editText);
+        body_water_form = (EditText) findViewById(R.id.editText2);
+        heart_rate_form = (EditText) findViewById(R.id.editText3);
+        ankle_circ_form = (EditText) findViewById(R.id.editText4);
 
     }
 
@@ -145,7 +160,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void record(View v) {
+
+        weight = weight_form.getText().toString();
+        body_water = body_water_form.getText().toString();
+        heart_rate = heart_rate_form.getText().toString();
+        ankle_circ = ankle_circ_form.getText().toString();
+
+        String[] array = {weight, body_water, heart_rate, ankle_circ};
+
         Intent i = new Intent(MainActivity.this, second.class);
+        i.putExtra("meritve", array);
         startActivity(i);
     }
 }
