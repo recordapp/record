@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -161,7 +162,7 @@ public class second extends AppCompatActivity {
 
         String patientIdEhr2 = "50bc1c98-8540-4d86-bbc7-813f7c55377e";
         String url3 = "https://rest.ehrscape.com/rest/v1/session?username=medrockweek1&password=medrockweek1";
-        String query = "select%20%20%20%20%20a_a/data%5Bat0002%5D/events%5Bat0003%5D/data%5Bat0001%5D/items%5Bat0004%5D/value%20as%20Weight,%20%20%20%20%20a/context/start_time,%20%20%20%20%20e/ehr_id/value,%20%20%20%20%20a_b/data%5Bat0001%5D/events%5Bat0002%5D/data%5Bat0003%5D/items%5Bat0004%5D/value%20as%20Total_water_percentage%20from%20EHR%20e%20contains%20COMPOSITION%20a%20contains%20(%20%20%20%20%20OBSERVATION%20a_a%5BopenEHR-EHR-OBSERVATION.body_weight.v1%5D%20and%20%20%20%20%20OBSERVATION%20a_b%5BopenEHR-EHR-OBSERVATION.body_water.v0%5D)%20where%20%20%20%20%20e/ehr_id/value%3D'50bc1c98-8540-4d86-bbc7-813f7c55377e'%20and%20%20%20%20%20a/context/start_time%3E'2016-07-13T09:57:26.346%2B02:00'%20offset%200%20limit%20100";
+        String query = "select%20%20%20%20%20a_a/data%5Bat0002%5D/events%5Bat0003%5D/data%5Bat0001%5D/items%5Bat0004%5D/value%20as%20Weight,%20%20%20%20%20a/context/start_time,%20%20%20%20%20e/ehr_id/value,%20%20%20%20%20a_b/data%5Bat0001%5D/events%5Bat0002%5D/data%5Bat0003%5D/items%5Bat0004%5D/value%20as%20Total_water_percentage%20from%20EHR%20e%20contains%20COMPOSITION%20a%20contains%20(%20%20%20%20%20OBSERVATION%20a_a%5BopenEHR-EHR-OBSERVATION.body_weight.v1%5D%20and%20%20%20%20%20OBSERVATION%20a_b%5BopenEHR-EHR-OBSERVATION.body_water.v0%5D)%20where%20%20%20%20%20e/ehr_id/value%3D'50bc1c98-8540-4d86-bbc7-813f7c55377e'%20and%20%20%20%20%20a/context/start_time%3E'"+datum()+"%2B02:00'%20offset%200%20limit%20100";
         String url4 ="https://rest.ehrscape.com/rest/v1/query/?aql="+query;
 
         //request
@@ -235,6 +236,28 @@ public class second extends AppCompatActivity {
             }
         };
         queue.add(jsObjRequest4);
+        //test.setText(datum());
+        System.out.println("aa"+datum());
 
+
+    }
+
+    public String datum() {
+        //Spremenljivke za čas
+        Calendar c = Calendar.getInstance();
+
+
+        String minutes=String.format("%02d",c.get(Calendar.MINUTE));
+        String hours=String.format("%02d",c.get(Calendar.HOUR_OF_DAY));
+        String second=String.format("%02d",c.get(Calendar.SECOND));
+
+        String day=String.format("%02d",c.get(Calendar.DAY_OF_MONTH)-1);
+        String month = String.format("%02d",c.get(Calendar.MONTH)+1);
+        String year=String.format("%02d",c.get(Calendar.YEAR));
+
+        int ms = c.get(Calendar.MILLISECOND);
+
+        //Sestavimo format časa
+        return year+"-"+month+"-"+day+"T"+hours+":"+minutes+":"+second+"."+ms;
     }
 }
