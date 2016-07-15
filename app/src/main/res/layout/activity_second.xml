@@ -127,6 +127,7 @@
         android:clickable="true"
         android:layout_marginBottom="26dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="record2"/>
 
 </RelativeLayout>
