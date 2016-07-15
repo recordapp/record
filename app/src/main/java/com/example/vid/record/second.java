@@ -90,7 +90,7 @@ public class second extends AppCompatActivity {
     }
 
     public void record2(View v) {
-        test.setText(position_circ);
+        //test.setText(position_circ);
 
         String patientIdEhr = "50bc1c98-8540-4d86-bbc7-813f7c55377e";
         String patientIdEhr2 = "1229d4bc-2e95-4366-a555-3ce4e8655fd9";
@@ -114,7 +114,7 @@ public class second extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        test.setText("Prišlo je do napake med identifikacijo na strežniku!");
+                        //test.setText("Prišlo je do napake med identifikacijo na strežniku!");
                     }
                 });
 
@@ -142,12 +142,12 @@ public class second extends AppCompatActivity {
                 (Request.Method.POST, url2, new JSONObject(params), new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        test.setText("Vpis je bil uspešno poslan!");
+                        //test.setText("Vpis je bil uspešno poslan!");
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        test.setText("Prišlo je do napake med prenosom podatkov!1");
+                        //test.setText("Prišlo je do napake med prenosom podatkov!1");
                     }
                 }){
             @Override
@@ -162,7 +162,7 @@ public class second extends AppCompatActivity {
         queue.add(jsObjRequest2);
 
         String url3 = "https://rest.ehrscape.com/rest/v1/session?username=medrockweek1&password=medrockweek1";
-        String query = "select%20%20%20%20%20a_a/data%5Bat0002%5D/events%5Bat0003%5D/data%5Bat0001%5D/items%5Bat0004%5D/value%20as%20Weight,%20%20%20%20%20a/context/start_time,%20%20%20%20%20e/ehr_id/value,%20%20%20%20%20a_b/data%5Bat0001%5D/events%5Bat0002%5D/data%5Bat0003%5D/items%5Bat0004%5D/value%20as%20Total_water_percentage%20from%20EHR%20e%20contains%20COMPOSITION%20a%20contains%20(%20%20%20%20%20OBSERVATION%20a_a%5BopenEHR-EHR-OBSERVATION.body_weight.v1%5D%20and%20%20%20%20%20OBSERVATION%20a_b%5BopenEHR-EHR-OBSERVATION.body_water.v0%5D)%20where%20%20%20%20%20e/ehr_id/value%3D'"+patientIdEhr+"'%20and%20%20%20%20%20a/context/start_time%3E'"+datum()+"%2B02:00'%20offset%200%20limit%20100";
+        String query = "select%20%20%20%20%20a_a/data%5Bat0002%5D/events%5Bat0003%5D/data%5Bat0001%5D/items%5Bat0004%5D/value%20as%20Weight,%20%20%20%20%20a/context/start_time,%20%20%20%20%20e/ehr_id/value,%20%20%20%20%20a_b/data%5Bat0001%5D/events%5Bat0002%5D/data%5Bat0003%5D/items%5Bat0004%5D/value%20as%20Total_water_percentage%20from%20EHR%20e%20contains%20COMPOSITION%20a%20contains%20(%20%20%20%20%20OBSERVATION%20a_a%5BopenEHR-EHR-OBSERVATION.body_weight.v1%5D%20and%20%20%20%20%20OBSERVATION%20a_b%5BopenEHR-EHR-OBSERVATION.body_water.v0%5D)%20where%20%20%20%20%20e/ehr_id/value%3D'"+patientIdEhr+"'%20and%20%20%20%20%20a/context/start_time%3E'"+datum()+"'%20offset%200%20limit%20100";
         String url4 ="https://rest.ehrscape.com/rest/v1/query/?aql="+query;
 
         //request
@@ -179,7 +179,7 @@ public class second extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        test.setText("Prišlo je do napake med identifikacijo na strežniku!1");
+                        //test.setText("Prišlo je do napake med identifikacijo na strežniku!1");
                     }
                 });
 
@@ -216,14 +216,14 @@ public class second extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            test.setText("Napaka pri parsanju");
+                            //test.setText("Napaka pri parsanju");
                         }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        test.setText("Prišlo je do napake med prenosom podatkov!2");
-                        test.setText(error.toString());
+                        //test.setText("Prišlo je do napake med prenosom podatkov!2");
+                        //test.setText(error.toString());
                     }
                 }){
             @Override
@@ -248,10 +248,10 @@ public class second extends AppCompatActivity {
 
 
         String minutes=String.format("%02d",c.get(Calendar.MINUTE));
-        String hours=String.format("%02d",c.get(Calendar.HOUR_OF_DAY)-1);
+        String hours=String.format("%02d",c.get(Calendar.HOUR_OF_DAY));
         String second=String.format("%02d",c.get(Calendar.SECOND));
 
-        String day=String.format("%02d",c.get(Calendar.DAY_OF_MONTH));
+        String day=String.format("%02d",c.get(Calendar.DAY_OF_MONTH)-1);
         String month = String.format("%02d",c.get(Calendar.MONTH)+1);
         String year=String.format("%02d",c.get(Calendar.YEAR));
 
