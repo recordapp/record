@@ -35,9 +35,9 @@ public class results extends AppCompatActivity {
 
         seznam = getIntent().getStringArrayListExtra("seznam");
 
-        //int algoritm = algoritm(seznam);
-        //test.setText(HeartAttackPrediction(algoritm, 5));
-        test.setText(seznam.toString());
+        int algoritm = algoritm(seznam);
+        test.setText(HeartAttackPrediction(algoritm, 5));
+        //test.setText(seznam.toString());
         //test.setText("ss");
     }
 

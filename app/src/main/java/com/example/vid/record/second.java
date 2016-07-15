@@ -248,10 +248,10 @@ public class second extends AppCompatActivity {
 
 
         String minutes=String.format("%02d",c.get(Calendar.MINUTE));
-        String hours=String.format("%02d",c.get(Calendar.HOUR_OF_DAY));
+        String hours=String.format("%02d",c.get(Calendar.HOUR_OF_DAY)-1);
         String second=String.format("%02d",c.get(Calendar.SECOND));
 
-        String day=String.format("%02d",c.get(Calendar.DAY_OF_MONTH)-1);
+        String day=String.format("%02d",c.get(Calendar.DAY_OF_MONTH));
         String month = String.format("%02d",c.get(Calendar.MONTH)+1);
         String year=String.format("%02d",c.get(Calendar.YEAR));
 
