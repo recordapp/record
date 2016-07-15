@@ -208,6 +208,11 @@ public class second extends AppCompatActivity {
                                 test1 = test1 + weight1.toString()+" ";
                             }
                             //test.setText(seznam.toString());
+
+                            Intent i = new Intent(second.this, results.class);
+                            i.putStringArrayListExtra("seznam", seznam);
+                            startActivity(i);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             test.setText("Napaka pri parsanju");
@@ -230,24 +235,6 @@ public class second extends AppCompatActivity {
             }
         };
         queue.add(jsObjRequest4);
-        seznam.add("23");
-        seznam.add("34");
-        seznam.add("23");
-        Intent i = new Intent(second.this, results.class);
-        i.putStringArrayListExtra("seznam", seznam);
-
-        /*final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Do something after 5s = 5000ms
-                startActivity(i);
-            }
-        }, 1000);*/
-
-
-        //test.setText(seznam.toString());
-        startActivity(i);
 
     }
 }
